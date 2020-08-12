@@ -17,7 +17,7 @@
       </p>
 
     </div>
-    <div class="col-md-10">
+    <div class="col-md-5">
       <!--Body content-->
       
       <ul class="phones">
@@ -30,3 +30,4 @@
     </div>
   </div>
 </div>
+<pre>{{$ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp | json}}</pre>
