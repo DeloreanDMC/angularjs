@@ -26,9 +26,13 @@
     <script src="phone-detail/phone-detail.component.js"></script>
   </head>
   <body>
+    <nav class="navbar dark">
+      <a class="navbar-brand" ui-sref="phones">Phones</a>
+      <a class="navbar-brand" ui-sref="user">Profile</a>
+    </nav>
 
     <div class="view-container">
-      <div ng-view class="view-frame"></div>
+      <ui-view></ui-view>
     </div>
 
   </body>

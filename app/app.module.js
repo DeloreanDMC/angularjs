@@ -5,7 +5,7 @@ angular.module('phonecatApp', [
   // ...which depends on the `phoneList` module
   'ngAnimate',
   'core',
-  'ngRoute',
+  'ui.router',
   'phoneDetail',
   'phoneList'
 ]);
