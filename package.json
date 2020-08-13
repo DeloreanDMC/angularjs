@@ -6,10 +6,12 @@
   "repository": "https://github.com/angular/angular-phonecat",
   "license": "MIT",
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.28",
     "angular": "1.8.x",
     "angular-animate": "1.8.x",
     "angular-resource": "1.8.x",
     "angular-route": "1.8.x",
+    "angular-ui-router": "^1.0.28",
     "bootstrap": "3.3.x",
     "jquery": "^3.5.1"
   },
