@@ -109,3 +109,7 @@ h1 {
 .active {
   color: #d8581d !important;
 }
+
+.error {
+  color: #ad3246;
+}
