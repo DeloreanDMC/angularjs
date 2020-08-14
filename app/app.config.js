@@ -1,27 +1,22 @@
-// angular.
-//     module('phonecatApp').
-//     config(['$routeProvider', 
-//         function config($routeProvider) {
-//             $routeProvider.
-//                 when('/phones', {
-//                     template: '<phone-list></phone-list>'
-//                 }).
-//                 when('/phones/:phoneId', {
-//                     template: '<phone-detail></phone-detail>'
-//                 }).
-//                 otherwise('/phones');
-//         }
-// ])
 
 angular.
     module('phonecatApp').
-    config(function($stateProvider) {
-
+    config(["$stateProvider", "$locationProvider", "$urlRouterProvider", function($stateProvider, $locationProvider, $urlRouterProvider) {
+        // HTML5 ref
+        $locationProvider.html5Mode(true).hashPrefix('!')
+        
         const states = [
             {
                 name: 'phones',
                 url: '/phones',
-                component: 'phoneList'
+                component: 'phoneList',
+                resolve:{
+                    phones:  ['Phone', function PhoneListController(Phone) {
+                        return Phone.query();
+                    }],
+                    orderProp: function age() { return 'age'}
+                }
+                
             },
             {
                 name: 'user',
@@ -33,9 +28,19 @@ angular.
                 url: '/phones/{phoneId}', 
                 component: 'phoneDetail',
                 resolve: {
-                        phone: function(Phone, $transition$) {
+                        phone: ['Phone' , '$transition$', function(Phone, $transition$) {
                             return Phone.get({phoneId: $transition$.params().phoneId})
-                        }
+                        }]
+                }
+            },
+            {
+                name:'phones.phoneDetail',
+                url: '/{phoneId}',
+                component: "shortInfo",
+                resolve: {
+                    shortInfo: function(phones, $stateParams) {
+                        return phones.find(el=>el.id===$stateParams.phoneId)
+                    }
                 }
             }            
         ];
@@ -43,4 +48,6 @@ angular.
         states.forEach(function(state) {
             $stateProvider.state(state);
           });
-  });
+
+        $urlRouterProvider.otherwise('/phones');
+  }]);

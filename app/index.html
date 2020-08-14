@@ -20,15 +20,19 @@
     <script src="core/checkmark/checkmark.filter.js"></script>
     <script src="core/phone/phone.module.js"></script>
     <script src="core/phone/phone.service.js"></script>
+    
     <script src="phone-list/phone-list.module.js"></script>
     <script src="phone-list/phone-list.component.js"></script>
+    <script src="phone-list/phone-short-info/phone-short-info.js"></script>
     <script src="phone-detail/phone-detail.module.js"></script>
     <script src="phone-detail/phone-detail.component.js"></script>
+    
   </head>
   <body>
+    <base href="/">
     <nav class="navbar dark">
-      <a class="navbar-brand" ui-sref="phones">Phones</a>
-      <a class="navbar-brand" ui-sref="user">Profile</a>
+      <a class="navbar-brand" ui-sref="phones" ui-sref-active="active">Phones</a>
+      <a class="navbar-brand" ui-sref="user" ui-sref-active="active">Profile</a>
     </nav>
 
     <div class="view-container">

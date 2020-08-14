@@ -27,10 +27,14 @@
             <img ng-src="{{phone.imageUrl}}" alr="{{phone.name}}"/>
           </a>
           <a ui-sref="phoneDetail({ phoneId: phone.id})">{{phone.name}}</a>
+          <button class="btn btn-default" ui-sref="phones.phoneDetail({ phoneId: phone.id})">short look</button>
           <p>{{phone.snippet}}</p>
         </li>
+
       </ul>
       
     </div>
+
+    <ui-view></ui-view>
   </div>
 </div>

@@ -4,10 +4,9 @@
 angular.
   module('phoneList').
   component('phoneList', {
+    bindings: {
+      phones: "<",
+      orderProp: "<"
+    },
     templateUrl: 'phone-list/phone-list.template.html',
-    controller: ['Phone', function PhoneListController(Phone) {
-      this.phones = Phone.query();
-      this.orderProp = 'age';
-    }
-  ]
 });
