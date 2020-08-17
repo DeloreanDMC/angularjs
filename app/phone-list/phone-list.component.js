@@ -15,27 +15,27 @@ angular.module("phoneList").component("phoneList", {
     function (PhoneDialog, calculate, $timeout) {
       const self = this;
 
+      function asyncPhonesSetter(data) {
+        $timeout(function setPhones() {
+          self.phones.length = 0;
+          for (let i = 0; i < data.length; ++i) {
+            self.phones[i] = data[i];
+          }
+        });
+      }
+
       self.openDialog = PhoneDialog(self);
 
       self.$onInit = function () {
         self.$worker = calculate(self.phones);
-
-        self.$worker.subscribe(function asyncPhonesSetter(data) {
-          $timeout(function setPhones() {
-            self.phones.length = 0;
-            for (let i = 0; i < data.length; ++i) {
-              self.phones[i] = data[i];
-            }
-          });
-        });
       };
 
       self.orderPropHandler = function () {
-        self.$worker.sort(self.orderProp);
+        self.$worker.sort(self.orderProp).then(asyncPhonesSetter);
       };
 
       self.queryHandler = function () {
-        self.$worker.filter(self.query);
+        self.$worker.filter(self.query).then(asyncPhonesSetter);
       };
     },
   ],
