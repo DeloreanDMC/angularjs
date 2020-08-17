@@ -1,13 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" ng-app="phonecatApp">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Google Phone Gallery</title>
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="app.css" />
     <link rel="stylesheet" href="app.animations.css" />
-    <link rel="stylesheet" href="lib/ng-dialog/css/ngDialog.min.css">
-    <link rel="stylesheet" href="lib/ng-dialog/css/ngDialog-theme-default.min.css">
+    <link rel="stylesheet" href="lib/ng-dialog/css/ngDialog.min.css" />
+    <link
+      rel="stylesheet"
+      href="lib/ng-dialog/css/ngDialog-theme-default.min.css"
+    />
 
     <script src="lib/jquery/dist/jquery.js"></script>
     <script src="lib/angular/angular.js"></script>
@@ -17,7 +20,7 @@
     <script src="lib/angular-route/angular-route.js"></script>
     <script src="lib/angular-messages/angular-messages.js"></script>
     <script src="lib/ng-dialog/js/ngDialog.min.js"></script>
-    
+
     <script src="app.module.js"></script>
     <script src="app.config.js"></script>
     <script src="app.animations.js"></script>
@@ -25,8 +28,11 @@
     <script src="core/checkmark/checkmark.filter.js"></script>
     <script src="core/phone/phone.module.js"></script>
     <script src="core/phone/phone.service.js"></script>
-    
+
+    <script src="user/user.component.js"></script>
+
     <script src="phone-dialog/popDialog.service.js"></script>
+    <script src="phone-dialog/popDialog.focus.directive.js"></script>
     <script src="phone-dialog/popDialog.validator.js"></script>
 
     <script src="phone-list/phone-list.module.js"></script>
@@ -34,18 +40,18 @@
     <script src="phone-list/phone-short-info/phone-short-info.js"></script>
     <script src="phone-detail/phone-detail.module.js"></script>
     <script src="phone-detail/phone-detail.component.js"></script>
-    
   </head>
   <body>
-    <base href="/">
+    <base href="/" />
     <nav class="navbar dark">
-      <a class="navbar-brand" ui-sref="phones" ui-sref-active="active">Phones</a>
+      <a class="navbar-brand" ui-sref="phones" ui-sref-active="active"
+        >Phones</a
+      >
       <a class="navbar-brand" ui-sref="user" ui-sref-active="active">Profile</a>
     </nav>
 
     <div class="view-container">
       <ui-view></ui-view>
     </div>
-
   </body>
 </html>

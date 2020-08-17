@@ -1,8 +1,8 @@
 <h1>Addition device form</h1>
 <p>Count phones: {{$ctrl.len}}</p>
-<form name="form" class="css-form" novalidate>
+<form name="form" class="css-form" novalidate >
     <label>Name:
-        <input type="text" ng-model="$ctrl.phone.name" name="name" first-uppercase='qqq' required/>
+        <input type="text" ng-model="$ctrl.phone.name" name="name" first-uppercase='qqq' required focus/>
         <div ng-messages="form.name.$error" role="alert" ng-show="form.$submitted || form.name.$touched">
             <div ng-repeat="errorMessage in $ctrl.errorMessages">
                 <div ng-message-exp="errorMessage.type" class="error">{{ errorMessage.text }}</div>
@@ -10,7 +10,7 @@
         </div>    
     </label>
     <label>Snippet:
-        <input type="text" ng-model="$ctrl.phone.snippet" name="snippet" first-uppercase required/>
+        <input type="text" ng-model="$ctrl.phone.snippet" name="snippet" first-uppercase required />
         <div ng-messages="form.snippet.$error" role="alert" ng-show="form.$submitted || form.snippet.$touched">
             <div ng-repeat="errorMessage in $ctrl.errorMessages">
                 <div ng-message-exp="errorMessage.type" class="error">{{ errorMessage.text }}</div>
