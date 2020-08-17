@@ -11,25 +11,32 @@ angular.module("phoneList").component("phoneList", {
     "PhoneDialog",
     "calculate",
     "$timeout",
-    function (PhoneDialog, calculate,$timeout) {
+    "$rootScope",
+    function (PhoneDialog, calculate, $timeout) {
       const self = this;
+
       self.openDialog = PhoneDialog(self);
-       
-      self.$onInit = function() {
-        const $worker = calculate(self.phones);
-        $worker.subscribe(function asyncPhonesSetter(data) {    
-          $timeout( function setPhones() {
-            for(let i=0; i<data.length; ++i) {
-              self.phones[i] = data[i];  
+
+      self.$onInit = function () {
+        self.$worker = calculate(self.phones);
+
+        self.$worker.subscribe(function asyncPhonesSetter(data) {
+          $timeout(function setPhones() {
+            self.phones.length = 0;
+            for (let i = 0; i < data.length; ++i) {
+              self.phones[i] = data[i];
             }
           });
         });
       };
 
-      
+      self.orderPropHandler = function () {
+        self.$worker.sort(self.orderProp);
+      };
 
-
-       
+      self.queryHandler = function () {
+        self.$worker.filter(self.query);
+      };
     },
   ],
 });
