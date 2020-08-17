@@ -1,16 +1,17 @@
 angular.module("popDialog", ["ngDialog", "ngMessages"]).factory("PhoneDialog", [
-  "ngDialog",
-  function (ngDialog) {
-    return function openDialogFactory(other) {
-      return function openDialog() {
-        ngDialog.open({
+  "ngDialog","$timeout",
+  function (ngDialog, $timeout) {
+    return function openDialogFactory() {
+      return function openDialog(phones) {
+        return ngDialog.open({
           controllerAs: "$ctrl",
           template: "phone-dialog/popDilog.html",
           className: "ngdialog-theme-default",
-          controller: function Ctrl(phones) {
-            this.len = phones.length;
+          controller: function Ctrl() {
+            var self = this;
+            self.len = phones.length;
 
-            this.errorMessages = [
+            self.errorMessages = [
               {
                 type: "required",
                 text: "Please enter a value for this field",
@@ -21,20 +22,15 @@ angular.module("popDialog", ["ngDialog", "ngMessages"]).factory("PhoneDialog", [
               },
             ];
 
-            this.onAdd = function () {
-              this.phone.id = this.phone.name;
-              phones.push(this.phone);
+            self.onAdd = function () {
+              self.phone.id = self.phone.name;
+              $timeout(()=>phones.push(self.phone));
               ngDialog.close();
             };
 
-            this.onClose = function () {
+            self.onClose = function () {
               ngDialog.close();
             };
-          },
-          resolve: {
-            phones: function () {
-              return other.phones;
-            },
           },
         });
       };
