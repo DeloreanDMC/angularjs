@@ -20,7 +20,6 @@ function reduce(action) {
       postMessage(phones);
       break;
     case "FILTER":
-      console.log(action.payload);
       const substring = action.payload;
       const newPhones = phones.filter(
         (phone) => {
