@@ -3,12 +3,12 @@
     <div class="col-md-2">
       <!--Sidebar content-->
       <p>
-        Search: <input ng-model="$ctrl.query"/>
+        Search: <input ng-model="$ctrl.query" ng-change="$ctrl.queryHandler()" />
       </p>
 
       <p>
         Sort by:
-        <select ng-model="$ctrl.orderProp">
+        <select ng-model="$ctrl.orderProp" ng-change="$ctrl.orderPropHandler()">
           <option value="name">Alphabetical</option>
           <option value="age">Newest</option>
           <option value="-age">Oldest</option>
@@ -16,7 +16,7 @@
         <p>{{$ctrl.orderProp}}</p>
       </p>
       
-      <button class="btn btn-warning" ng-click="$ctrl.openDialog()"> <!--$ctrl.openDialog($ctrl.phones)-->
+      <button class="btn btn-warning" ng-click="$ctrl.openDialog($ctrl.phones)">
         Add device
       </button>
     </div>
@@ -24,7 +24,7 @@
       <!--Body content-->
       
       <ul class="phones">
-        <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp"
+        <li ng-repeat="phone in $ctrl.phones"
         class="thumbnail phone-list-item">
           <a ui-sref="phoneDetail({ phoneId: phone.id})" class="thumb">
             <img ng-src="{{phone.imageUrl}}" alr="{{phone.name}}"/>

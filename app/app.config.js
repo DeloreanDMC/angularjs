@@ -15,7 +15,7 @@ angular.module("phonecatApp").config([
           phones: [
             "Phone",
             function PhoneListController(Phone) {
-              return Phone.query();
+              return Phone.query().$promise;
             },
           ],
           orderProp: function age() {
@@ -48,6 +48,7 @@ angular.module("phonecatApp").config([
         component: "shortInfo",
         resolve: {
           shortInfo: function (phones, $stateParams) {
+            console.log(phones);
             return phones.find((el) => el.id === $stateParams.phoneId);
           },
         },
