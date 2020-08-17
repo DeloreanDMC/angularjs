@@ -16,6 +16,10 @@ angular
             // Компилируются только '.childNodes', чтобы не попасть в бесконечный цикл
             // компиляции самого себя
             $compile(element.contents())(scope);
+
+            var element2 = angular.element('<p>{{total}}</p>');
+            scope.total = "350$";
+            element.append($compile(element2)(scope));
           }
         );
       };
