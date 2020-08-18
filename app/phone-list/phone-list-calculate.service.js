@@ -11,14 +11,16 @@ angular.module("phoneList").factory("calculate", [
       phonesWorker.postMessage({ payload: phones, type: "INIT" });
       return {
         sort(sortKey) {
-          const promise = new Promise((res) => (resolver = res));
-          phonesWorker.postMessage({ payload: sortKey, type: "SORT" });
-          return promise;
+          return new Promise((res) => {
+            resolver = res;
+            phonesWorker.postMessage({ payload: sortKey, type: "SORT" });
+          });
         },
         filter(substring) {
-          const promise = new Promise((res) => (resolver = res));
-          phonesWorker.postMessage({ payload: substring, type: "FILTER" });
-          return promise;
+          return new Promise((res) => {
+            resolver = res;
+            phonesWorker.postMessage({ payload: substring, type: "FILTER" });
+          });
         },
       };
     };
