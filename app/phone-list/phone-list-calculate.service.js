@@ -1,24 +1,22 @@
 angular.module("phoneList").factory("calculate", [
   "$q",
-  function ($q) {
+  function () {
     const phonesWorker = new Worker("phone-list/phone-list.worker.js");
-    let defer = $q.defer();
+    let resolver;
     phonesWorker.addEventListener("message", function ({ data }) {
-      defer.resolve(data);
+      resolver(data);
     });
 
     return function (phones) {
       phonesWorker.postMessage({ payload: phones, type: "INIT" });
       return {
         sort(sortKey) {
-          defer = $q.defer();
           phonesWorker.postMessage({ payload: sortKey, type: "SORT" });
-          return defer.promise;
+          return new Promise((res) => (resolver = res));
         },
         filter(substring) {
-          defer = $q.defer();
           phonesWorker.postMessage({ payload: substring, type: "FILTER" });
-          return defer.promise;
+          return new Promise((res) => (resolver = res));
         },
       };
     };

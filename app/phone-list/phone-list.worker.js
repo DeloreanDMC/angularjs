@@ -1,9 +1,10 @@
 let phones;
-
+let _phones;
 function reduce(action) {
   switch (action.type) {
     case "INIT":
       phones = action.payload;
+      _phones = [...phones];
       break;
     case "SORT":
       let dir = 1;
@@ -21,13 +22,13 @@ function reduce(action) {
       break;
     case "FILTER":
       const substring = action.payload;
-      const newPhones = phones.filter(
+      phones = _phones.filter(
         (phone) => {
           return phone.name.includes(substring);
         }
         // Object.values(phone).some((el) => el.toString().includes(substring))
       );
-      postMessage(newPhones);
+      postMessage(phones);
       break;
   }
 }
