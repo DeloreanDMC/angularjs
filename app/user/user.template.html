@@ -1,0 +1,8 @@
+<form [formGroup]="myform">
+  <input id="name" formControlName="name" /><br />
+  <input id="age" formControlName="age" /><br />
+  <div>Name:{{ myform.value.name }}</div>
+  <div>Age:{{ myform.value.age }}</div>
+  <button (click)="output()">click me</button>
+</form>
+<div>{{hello}}</div>
