@@ -25,18 +25,18 @@
       <ul class="phones">
         <li *ngFor="let phone of phones"
         class="thumbnail phone-list-item">
-          <a class="thumb"> <!--ui-sref="phoneDetail({ phoneId: phone.id})" -->
+          <a uiSref="details" [uiParams]="{phoneId: phone.id}" class="thumb" > <!--ui-sref="phoneDetail({ phoneId: phone.id})" -->
             <img [src]="phone.imageUrl" />
           </a>
-          <a >{{phone.name}}</a> <!--ui-sref="phoneDetail({ phoneId: phone.id})"-->
-          <button class="btn btn-default" >short look</button> <!--ui-sref="phones.phoneDetail({ phoneId: phone.id})"-->
+          <a uiSref="details" [uiParams]="{phoneId: phone.id}">{{phone.name}}</a> <!--ui-sref="phoneDetail({ phoneId: phone.id})"-->
+          <button class="btn btn-default" uiSref=".phoneDetail" [uiParams]="{ phoneId: phone.id}" >short look</button> <!--ui-sref="phones.phoneDetail({ phoneId: phone.id})"-->
           <p>{{phone.snippet}}</p>
         </li>
 
       </ul>
       
     </div>
-
-    <!-- <ui-view></ui-view> -->
+    
+    <ui-view></ui-view>
   </div>
 </div>

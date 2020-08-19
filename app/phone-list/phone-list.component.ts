@@ -9,10 +9,8 @@ import { Timeout } from "../ajs-upgraded-providers";
   templateUrl: "phone-list/phone-list.template.html"
 })
 export class PhoneListComponent implements OnInit {
-  @Input("phones") phonesPromise;
+  @Input() phones;
   @Input() orderProp;
-  
-  public phones:any[];
 
   private worker:any;
   public openDialog:Function;
@@ -26,10 +24,10 @@ export class PhoneListComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.phonesPromise.then(data=>{
-      this.phones = data;
-      this.worker = this.calculate(data);
-    })
+    // this.phonesPromise.then(data=>{
+      // this.phones = data;
+      this.worker = this.calculate(this.phones);
+    // })
     
   }
 
