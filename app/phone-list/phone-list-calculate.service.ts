@@ -9,6 +9,7 @@ angular.module("phoneList").factory("calculate", [
     });
 
     return function (phones) {
+      console.log(phones);
       phonesWorker.postMessage({ payload: phones, type: "INIT" });
       return {
         sort(sortKey) {

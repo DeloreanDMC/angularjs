@@ -13,18 +13,10 @@ angular.module("phonecatApp").config([
       {
         name: "phones",
         url: "/phones",
-        component: "phoneList",
-        resolve: {
-          phones: [
-            "Phone",
-            function PhoneListController(Phone) {
-              return Phone.query().$promise;
-            },
-          ],
-          orderProp: function age() {
-            return "age";
-          },
-        },
+        template: "<phone-list [phones]='phones_' [age]='`age`' ></phone-list>",
+        controller: ["Phone", "$scope", function(Phone,$scope) {
+          $scope.phones_=Phone.query().$promise;
+        }]
       },
       {
         name: "profile",
@@ -34,16 +26,13 @@ angular.module("phonecatApp").config([
       {
         name: "phoneDetail",
         url: "/phones/{phoneId}",
-        component: "phoneDetail",
-        resolve: {
-          phone: [
-            "Phone",
-            "$transition$",
-            function (Phone, $transition$) {
-              return Phone.get({ phoneId: $transition$.params().phoneId });
-            },
-          ],
-        },
+        template:"<phone-detail [phone]='phone_' ></phone-detail>",
+        controller: [
+        "$scope",  
+        "Phone",
+        "$transition$", function ($scope,Phone, $transition$) {
+          $scope.phone_ = Phone.get({ phoneId: $transition$.params().phoneId });
+        }]
       },
       {
         name: "phones.phoneDetail",
