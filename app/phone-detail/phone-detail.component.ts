@@ -12,6 +12,13 @@ const phoneDetailComponent = {
   },
 };
 
+export class PhoneDetailComponent {
+  public mainImageUrl;
+  setImage(imageUrl) {
+    this.mainImageUrl = imageUrl;
+  }
+}
+
 angular
   .module("phoneDetail")
   .component(phoneDetailComponent.selector, phoneDetailComponent);

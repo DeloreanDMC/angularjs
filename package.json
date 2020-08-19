@@ -18,22 +18,22 @@
     "@angular/platform-server": "^5.0.0",
     "@angular/router": "^5.0.0",
     "@angular/upgrade": "^5.0.0",
-    "angular-in-memory-web-api": "~0.5.0",
-    "core-js": "^2.4.1",
-    "rxjs": "^5.5.0",
-    "web-animations-js": "^2.3.1",
-    "zone.js": "^0.8.4",
     "@types/angular": "^1.7.2",
     "angular": "1.8.x",
     "angular-animate": "1.8.x",
+    "angular-in-memory-web-api": "~0.5.0",
     "angular-messages": "^1.8.0",
     "angular-resource": "1.8.x",
-    "angular-strap": "^2.3.12",
     "angular-route": "1.8.x",
+    "angular-strap": "^2.3.12",
     "angular-ui-router": "^1.0.28",
     "bootstrap": "3.3.x",
+    "core-js": "^2.4.1",
     "jquery": "^3.5.1",
-    "ng-dialog": "^1.4.0"
+    "ng-dialog": "^1.4.0",
+    "rxjs": "^5.5.0",
+    "web-animations-js": "^2.3.1",
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@types/node": "^6.0.46",
@@ -50,10 +50,13 @@
     "serve": "^5.2.4",
     "ts-loader": "^3.2.0",
     "typescript": "^3.9.7",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
     "start": "cd app && serve",
+    "start:dev": "webpack-dev-server",
     "build": "rimraf dist && webpack --bail --progress --profile"
   }
 }

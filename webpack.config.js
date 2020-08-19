@@ -16,6 +16,11 @@ module.exports = {
       { test: /\.tsx?$/, loader: "ts-loader" },
     ],
   },
+  devServer: {
+    contentBase: path.join(__dirname, 'app'),
+    compress: true,
+    port: 9000
+  },
   plugins: [
     new webpack.ContextReplacementPlugin(
       // if you have anymore problems tweet me at @gdi2290
