@@ -1,24 +1,21 @@
 import * as angular from "angular";
+import { Component, Input} from "@angular/core";
+import { downgradeComponent } from "@angular/upgrade/static";
 
-const phoneDetailComponent = {
-  selector: "phoneDetail",
-  templateUrl: "phone-detail/phone-detail.template.html",
-  bindings: { phone: "<" },
-  controller: class PhoneDetailController {
-    public mainImageUrl;
-    setImage(imageUrl) {
-      this.mainImageUrl = imageUrl;
-    }
-  },
-};
-
+@Component({
+  selector: "phone-detail",
+  templateUrl: "phone-detail/phone-detail.template.html"
+})
 export class PhoneDetailComponent {
+  @Input() phone: any;
   public mainImageUrl;
-  setImage(imageUrl) {
+  
+  public setImage(imageUrl) {
+    console.log(imageUrl);
     this.mainImageUrl = imageUrl;
   }
 }
 
 angular
   .module("phoneDetail")
-  .component(phoneDetailComponent.selector, phoneDetailComponent);
+  .directive("phoneDetail", downgradeComponent({component:PhoneDetailComponent, inputs: ['phone'],}));

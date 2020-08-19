@@ -29,7 +29,6 @@ h1 {
 /* View: Phone detail */
 .phone {
   background-color: white;
-  display: none;
   float: left;
   height: 400px;
   margin-bottom: 2em;
@@ -38,7 +37,9 @@ h1 {
   width: 400px;
 }
 
-.phone:first-child {
+.selected {
+  visibility: visible;
+  z-index: 10;
   display: block;
 }
 

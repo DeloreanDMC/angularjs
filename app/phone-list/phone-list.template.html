@@ -3,34 +3,33 @@
     <div class="col-md-2">
       <!--Sidebar content-->
       <p>
-        Search: <input ng-model="$ctrl.query" ng-change="$ctrl.queryHandler()" />
+        Search: <input [(ngModel)]="query" (input)="queryHandler()" />
       </p>
 
       <p>
         Sort by:
-        <select ng-model="$ctrl.orderProp" ng-change="$ctrl.orderPropHandler()">
+        <select [(ngModel)]="orderProp" (change)="orderPropHandler()">
           <option value="name">Alphabetical</option>
           <option value="age">Newest</option>
           <option value="-age">Oldest</option>
         </select>
-        <p>{{$ctrl.orderProp}}</p>
       </p>
       
-      <button class="btn btn-warning" ng-click="$ctrl.openDialog($ctrl.phones)">
+      <button class="btn btn-warning" (click)="openDialog(phones)">
         Add device
       </button>
     </div>
+
     <div class="col-md-5">
-      <!--Body content-->
       
       <ul class="phones">
-        <li ng-repeat="phone in $ctrl.phones"
+        <li *ngFor="let phone of phones"
         class="thumbnail phone-list-item">
-          <a ui-sref="phoneDetail({ phoneId: phone.id})" class="thumb">
-            <img ng-src="{{phone.imageUrl}}" alr="{{phone.name}}"/>
+          <a class="thumb"> <!--ui-sref="phoneDetail({ phoneId: phone.id})" -->
+            <img [src]="phone.imageUrl" />
           </a>
-          <a ui-sref="phoneDetail({ phoneId: phone.id})">{{phone.name}}</a>
-          <button class="btn btn-default" ui-sref="phones.phoneDetail({ phoneId: phone.id})">short look</button>
+          <a >{{phone.name}}</a> <!--ui-sref="phoneDetail({ phoneId: phone.id})"-->
+          <button class="btn btn-default" >short look</button> <!--ui-sref="phones.phoneDetail({ phoneId: phone.id})"-->
           <p>{{phone.snippet}}</p>
         </li>
 
@@ -38,6 +37,6 @@
       
     </div>
 
-    <ui-view></ui-view>
+    <!-- <ui-view></ui-view> -->
   </div>
 </div>
