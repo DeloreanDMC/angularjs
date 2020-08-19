@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, Injector } from "@angular/core";
+import { Directive, Input, ElementRef, Injector, Component } from "@angular/core";
 import { UpgradeComponent } from "@angular/upgrade/static";
 
 
@@ -11,4 +11,12 @@ export class ShortInfoComponent extends UpgradeComponent {
     constructor(elementRef: ElementRef, injector: Injector) {
         super('shortInfo', elementRef, injector);
     }
+}
+
+@Component({
+    selector:"wrapper",
+    template:"<short-info [shortInfo]='info'></short-info>"
+})
+export class Wrapper {
+    @Input("shortInfo") info: {name:string, snippet: string};
 }
